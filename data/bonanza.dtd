@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Bonanza DTD thingy magiggy
+-->
+
+<!-- order info: customer, order type, burgers, special order instructions -->
+<!ELEMENT order (customer, delivery?, burgers+, special)>
+
+<!-- A customer is only identified using their name -->
+<!ELEMENT customer (#PCDATA)> 
+
+<!-- Order can be eat-in, takeout, delivery ... -->
+<!ATTLIST order
+    type (eatin|takeout|delivery) #REQUIRED
+>
+
+<!-- Order delivered will need delivery instruction -->
+<!ELEMENT delivery (#PCDATA)>
+
+<!-- Sepcial instructions -->
+<!ELEMENT special (#PCDATA)>
+
+<!-- Burgers 
+Specification:
+- 1 of 5 patty types
+- up to two cheeses
+- any number of toppings
+- any number of sauces
+- special instructions
+- an optional name, should the customer wish to propose this as a menu item 
+-->
+<!ELEMENT burger (patty, cheeses, toppings, sauces, instructions?, name?)>
+
+<!-- Patty types.  5 types, default beef -->
+<!ELEMENT patty (#PCDATA)>
+<!ATTLIST patty
+    type (beef|pork|turkey|bison|vege) "beef"
+>
+
+
