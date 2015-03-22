@@ -4,7 +4,7 @@ Bonanza DTD thingy magiggy
 -->
 
 <!-- order info: customer, order type, burgers, special order instructions -->
-<!ELEMENT order (customer, delivery?, burgers+, special?)>
+<!ELEMENT order (customer, delivery?, burger+, special?)>
 
 <!-- A customer is only identified using their name -->
 <!ELEMENT customer (#PCDATA)> 
