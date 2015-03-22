@@ -4,7 +4,7 @@ Bonanza DTD thingy magiggy
 -->
 
 <!-- order info: customer, order type, burgers, special order instructions -->
-<!ELEMENT order (customer, delivery?, burgers+, special)>
+<!ELEMENT order (customer, delivery?, burgers+, special?)>
 
 <!-- A customer is only identified using their name -->
 <!ELEMENT customer (#PCDATA)> 
@@ -29,12 +29,38 @@ Specification:
 - special instructions
 - an optional name, should the customer wish to propose this as a menu item 
 -->
-<!ELEMENT burger (patty, cheeses, toppings, sauces, instructions?, name?)>
+<!ELEMENT burger (patty, cheeses?, topping*, sauce*, instructions?, name?)>
 
 <!-- Patty types.  5 types, default beef -->
 <!ELEMENT patty (#PCDATA)>
 <!ATTLIST patty
     type (beef|pork|turkey|bison|vege) "beef"
 >
+
+<!-- Customer can choose two cheeses, one on top, one on bottom -->
+<!ELEMENT cheeses EMPTY>
+<!ATTLIST cheeses 
+    top (america|swiss|jack|blue|gruyere|gouda|aged|goat|brie) #IMPLIED
+    bottom (america|swiss|jack|blue|gruyere|gouda|aged|goat|brie) #IMPLIED
+>
+
+<!-- Toppings... there could be tons, so we'll handle them individually -->
+<!ELEMENT topping (#PCDATA)>
+<!ATTLIST topping 
+    type (lettuce|tomato|raw|dill|roasted|shrooms|salsa|bacon|chilies|fkchili|avocado|egg|porkbelly) #REQUIRED
+>
+
+<!-- Sauces are like toppings -->
+<!ELEMENT sauce EMPTY>
+<!ATTLIST sauce
+    type (ketchup|mustard|mayo|fksauce) #REQUIRED
+>
+
+<!-- Instructions can be literally anything -->
+<!ELEMENT instructions (#PCDATA)>
+
+<!-- Allow customers to name their creation -->
+<!ELEMENT name (#PCDATA)>
+
 
 
