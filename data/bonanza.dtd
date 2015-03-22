@@ -40,8 +40,8 @@ Specification:
 <!-- Customer can choose two cheeses, one on top, one on bottom -->
 <!ELEMENT cheeses EMPTY>
 <!ATTLIST cheeses 
-    top (america|swiss|jack|blue|gruyere|gouda|aged|goat|brie) #IMPLIED
-    bottom (america|swiss|jack|blue|gruyere|gouda|aged|goat|brie) #IMPLIED
+    top (american|swiss|jack|blue|gruyere|gouda|aged|goat|brie) #IMPLIED
+    bottom (american|swiss|jack|blue|gruyere|gouda|aged|goat|brie) #IMPLIED
 >
 
 <!-- Toppings... there could be tons, so we'll handle them individually -->
